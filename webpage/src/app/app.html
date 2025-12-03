@@ -1,9 +1,31 @@
-<div class="min-h-screen bg-gray-100 flex items-center justify-center">
-  <div class="bg-white p-8 rounded-lg shadow-lg">
-    <h1 class="text-3xl font-bold text-blue-600 mb-4">Test</h1>
-    <p class="text-gray-700">test</p>
-  </div>
+<div class="flex h-screen bg-gray-100">
+  <nav class="w-64 bg-white shadow-lg">
+    <div class="p-6">
+      <h1 class="text-xl font-bold text-gray-800">Internal Tools</h1>
+    </div>
+    <ul class="space-y-2 px-4">
+      <li>
+        <a routerLink="/tickets" routerLinkActive="bg-blue-100 text-blue-600" 
+           class="block px-4 py-2 rounded hover:bg-gray-100">
+          Tickets
+        </a>
+      </li>
+      <li>
+        <a routerLink="/knowledgebase" routerLinkActive="bg-blue-100 text-blue-600"
+           class="block px-4 py-2 rounded hover:bg-gray-100">
+          Knowledgebase
+        </a>
+      </li>
+      <li>
+        <a routerLink="/logs" routerLinkActive="bg-blue-100 text-blue-600"
+           class="block px-4 py-2 rounded hover:bg-gray-100">
+          Logs
+        </a>
+      </li>
+    </ul>
+  </nav>
+  
+  <main class="flex-1 overflow-auto">
+    <router-outlet />
+  </main>
 </div>
-
-
-<router-outlet />
