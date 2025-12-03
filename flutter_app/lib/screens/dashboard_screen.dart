@@ -57,6 +57,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Dashboard'),
+        centerTitle: false,
       ),
       body: RefreshIndicator(
         onRefresh: () async {
