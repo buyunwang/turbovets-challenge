@@ -72,7 +72,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
           if (errorMessage != null)
             Center(
               child: Padding(
-                padding: const EdgeInsets.all(Spacing.standard),
+                padding: const EdgeInsets.all(Spacing.lg),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -81,13 +81,13 @@ class _DashboardScreenState extends State<DashboardScreen> {
                       color: Colors.red,
                       size: 48,
                     ),
-                    const SizedBox(height: Spacing.standard),
+                    const SizedBox(height: Spacing.lg),
                     Text(
                       errorMessage!,
                       textAlign: TextAlign.center,
                       style: const TextStyle(fontSize: 16),
                     ),
-                    const SizedBox(height: Spacing.standard),
+                    const SizedBox(height: Spacing.lg),
                     ElevatedButton(
                       onPressed: () {
                         setState(() {

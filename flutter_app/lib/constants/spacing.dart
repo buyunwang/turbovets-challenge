@@ -1,5 +1,10 @@
+// Spacing constants
 class Spacing {
   Spacing._();
-
-  static const double standard = 16.0;
+  
+  static const double xs = 4.0;
+  static const double sm = 8.0;
+  static const double md = 12.0;
+  static const double lg = 16.0;
+  static const double xl = 24.0;
 }
