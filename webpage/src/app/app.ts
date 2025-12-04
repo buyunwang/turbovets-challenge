@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import { RouterOutlet, RouterLink, RouterLinkActive } from '@angular/router';
-import { NgFor } from '@angular/common';
+import { NgFor, NgClass } from '@angular/common';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, RouterLink, RouterLinkActive, NgFor],
+  imports: [RouterOutlet, RouterLink, RouterLinkActive, NgFor, NgClass],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
