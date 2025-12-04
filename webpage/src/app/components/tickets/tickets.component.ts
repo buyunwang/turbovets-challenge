@@ -11,12 +11,6 @@ interface Ticket {
   createdAt: Date;
 }
 
-const STATUS_CLASSES: Record<TicketStatus, string> = {
-  'Open': 'bg-blue-100 text-blue-800',
-  'In Progress': 'bg-yellow-100 text-yellow-800',
-  'Closed': 'bg-green-100 text-green-800'
-};
-
 @Component({
   selector: 'app-tickets',
   standalone: true,
@@ -51,9 +45,5 @@ export class TicketsComponent {
 
   setFilter(filter: FilterOption): void {
     this.selectedFilter = filter;
-  }
-
-  getStatusClass(status: TicketStatus): string {
-    return STATUS_CLASSES[status];
   }
 }
