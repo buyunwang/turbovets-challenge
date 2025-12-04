@@ -1,4 +1,39 @@
-<div class="p-6">
-  <h2 class="text-2xl font-bold mb-4">Knowledgebase</h2>
-  <p>Coming soon</p>
+<div class="p-4 md:p-6">
+  <h2 class="text-2xl font-bold mb-4">Knowledgebase Editor</h2>
+  
+  <div class="mb-6 flex flex-wrap gap-2">
+    <button
+      (click)="togglePreview()"
+      class="px-4 py-2 bg-gray-600 text-white rounded-lg font-medium hover:bg-gray-700 transition-colors">
+      {{ isPreviewMode ? 'Edit' : 'Preview' }}
+    </button>
+    <button
+      (click)="saveContent()"
+      class="px-4 py-2 bg-blue-600 text-white rounded-lg font-medium hover:bg-blue-700 transition-colors">
+      Save
+    </button>
+  </div>
+
+  <!-- Save Success Message -->
+  <div *ngIf="saveMessage" class="mb-4 p-3 bg-green-100 text-green-800 rounded-lg">
+    {{ saveMessage }}
+  </div>
+
+  <!-- Editor Mode -->
+  <div *ngIf="!isPreviewMode" class="bg-white rounded-lg shadow">
+    <textarea
+      [(ngModel)]="markdownContent"
+      class="w-full h-[calc(100vh-280px)] md:h-[calc(100vh-240px)] p-4 font-mono text-sm border-0 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none"
+      placeholder="Write your markdown here..."></textarea>
+  </div>
+
+  <!-- Preview Mode -->
+  <div *ngIf="isPreviewMode" class="bg-white rounded-lg shadow p-6 min-h-[calc(100vh-280px)] md:min-h-[calc(100vh-240px)]">
+    <div [innerHTML]="convertMarkdownToHtml(markdownContent)" class="prose max-w-none"></div>
+  </div>
+
+  <!-- Markdown Help -->
+  <div class="mt-4 p-3 bg-gray-50 rounded-lg text-sm text-gray-600">
+    <strong>Markdown tips:</strong> # Heading | **bold** | *italic* | `code` | - list | [link](url)
+  </div>
 </div>

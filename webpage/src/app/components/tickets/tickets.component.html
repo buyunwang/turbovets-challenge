@@ -1,31 +1,16 @@
 <div class="p-4 md:p-6">
   <h2 class="text-2xl font-bold mb-4">Support Tickets</h2>
   
-  <!-- Filters -->
   <div class="mb-6 flex flex-wrap gap-2">
     <button 
-      (click)="setFilter('All')"
-      [class]="selectedFilter === 'All' ? 'bg-blue-600 text-white' : 'bg-gray-200 text-gray-700'"
+      *ngFor="let filter of filters"
+      (click)="setFilter(filter)"
+      [ngClass]="{
+        'bg-blue-600 text-white': selectedFilter === filter,
+        'bg-gray-200 text-gray-700': selectedFilter !== filter
+      }"
       class="px-4 py-2 rounded-lg font-medium transition-colors hover:opacity-80">
-      All
-    </button>
-    <button 
-      (click)="setFilter('Open')"
-      [class]="selectedFilter === 'Open' ? 'bg-blue-600 text-white' : 'bg-gray-200 text-gray-700'"
-      class="px-4 py-2 rounded-lg font-medium transition-colors hover:opacity-80">
-      Open
-    </button>
-    <button 
-      (click)="setFilter('In Progress')"
-      [class]="selectedFilter === 'In Progress' ? 'bg-blue-600 text-white' : 'bg-gray-200 text-gray-700'"
-      class="px-4 py-2 rounded-lg font-medium transition-colors hover:opacity-80">
-      In Progress
-    </button>
-    <button 
-      (click)="setFilter('Closed')"
-      [class]="selectedFilter === 'Closed' ? 'bg-blue-600 text-white' : 'bg-gray-200 text-gray-700'"
-      class="px-4 py-2 rounded-lg font-medium transition-colors hover:opacity-80">
-      Closed
+      {{ filter }}
     </button>
   </div>
 

@@ -1,12 +1,21 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
+type TicketStatus = 'Open' | 'In Progress' | 'Closed';
+type FilterOption = 'All' | TicketStatus;
+
 interface Ticket {
   id: string;
   subject: string;
-  status: 'Open' | 'In Progress' | 'Closed';
+  status: TicketStatus;
   createdAt: Date;
 }
+
+const STATUS_CLASSES: Record<TicketStatus, string> = {
+  'Open': 'bg-blue-100 text-blue-800',
+  'In Progress': 'bg-yellow-100 text-yellow-800',
+  'Closed': 'bg-green-100 text-green-800'
+};
 
 @Component({
   selector: 'app-tickets',
@@ -16,6 +25,8 @@ interface Ticket {
   styleUrl: './tickets.component.css'
 })
 export class TicketsComponent {
+  readonly filters: FilterOption[] = ['All', 'Open', 'In Progress', 'Closed'];
+  
   allTickets: Ticket[] = [
     { id: '#001', subject: 'cant login', status: 'Open', createdAt: new Date('2024-12-01T09:15:00') },
     { id: '#002', subject: 'payment issue', status: 'In Progress', createdAt: new Date('2024-12-01T10:30:00') },
@@ -29,7 +40,7 @@ export class TicketsComponent {
     { id: '#010', subject: 'notifications stopped', status: 'Open', createdAt: new Date('2024-12-03T10:15:00') },
   ];
 
-  selectedFilter: 'All' | 'Open' | 'In Progress' | 'Closed' = 'All';
+  selectedFilter: FilterOption = 'All';
 
   get filteredTickets(): Ticket[] {
     if (this.selectedFilter === 'All') {
@@ -38,20 +49,11 @@ export class TicketsComponent {
     return this.allTickets.filter(ticket => ticket.status === this.selectedFilter);
   }
 
-  setFilter(filter: 'All' | 'Open' | 'In Progress' | 'Closed'): void {
+  setFilter(filter: FilterOption): void {
     this.selectedFilter = filter;
   }
 
-  getStatusClass(status: string): string {
-    switch (status) {
-      case 'Open':
-        return 'bg-blue-100 text-blue-800';
-      case 'In Progress':
-        return 'bg-yellow-100 text-yellow-800';
-      case 'Closed':
-        return 'bg-green-100 text-green-800';
-      default:
-        return 'bg-gray-100 text-gray-800';
-    }
+  getStatusClass(status: TicketStatus): string {
+    return STATUS_CLASSES[status];
   }
 }
